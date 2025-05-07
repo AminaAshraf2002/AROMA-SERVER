@@ -19,15 +19,24 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // CORS Configuration
-app.use(cors({
+const corsOptions = {
   origin: [
     'http://localhost:3000', 
     'http://localhost:5173', 
-    'http://localhost:5000'
+    'https://aroma-swart.vercel.app'  // Trailing slash removed
   ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'],
+  credentials: true, // Added for credentials support
+  preflightContinue: false,
+  optionsSuccessStatus: 204
+};
+
+// Apply CORS with options
+app.use(cors(corsOptions));
+
+// Handle preflight requests for all routes
+app.options('*', cors(corsOptions));
 
 // Rate limiting
 const limiter = rateLimit({
