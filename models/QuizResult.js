@@ -1,3 +1,4 @@
+// models/QuizResult.js
 const mongoose = require('mongoose');
 
 const QuizResultSchema = new mongoose.Schema({
@@ -6,14 +7,19 @@ const QuizResultSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
-  answers: [Number],  // Array of selected answer indices
+  answers: {
+    type: [Number],  // Array of selected answer indices
+    default: []      // Default to empty array
+  },
   score: {
     type: Number,
-    required: true
+    required: true,
+    default: 0       // Default score to 0
   },
   correctAnswers: {
     type: Number,
-    required: true
+    required: true,
+    default: 0       // Default correct answers to 0
   },
   totalQuestions: {
     type: Number,
