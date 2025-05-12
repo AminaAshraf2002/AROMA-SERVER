@@ -21,8 +21,8 @@ if (process.env.NODE_ENV === 'development') {
 // CORS Configuration
 app.use(cors({
   origin: [
-    'http://localhost:3000', 
-    'http://localhost:5174', 
+    'https://aroma-server.onrender.com', 
+    // 'http://localhost:5174', 
     'https://aroma-swart.vercel.app'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
