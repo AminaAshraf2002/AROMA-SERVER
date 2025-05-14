@@ -23,7 +23,7 @@ app.use(cors({
   origin: [
     'https://aroma-server.onrender.com', 
     // 'http://localhost:5174', 
-    'https://aroma-swart.vercel.app'
+    'https://aromareserch.com'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
